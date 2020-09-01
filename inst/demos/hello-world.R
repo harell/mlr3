@@ -12,6 +12,7 @@ lrn <- mlr3::lrn
 rsmp <- mlr3::rsmp
 
 # Setup -------------------------------------------------------------------
+pkgload::load_all(export_all = TRUE)
 # tasks, train, predict, resample, benchmark
 library("mlr3")
 # about a dozen reasonable learners
@@ -70,9 +71,14 @@ predict_cv$data %>% print()
 predict_cv$prediction() %>% as.data.table() %>% dplyr::arrange(row_id) %>% head() %>% print()
 
 # Populating the learner dictionary ---------------------------------------
-
-
+# browseURL("https://github.com/mlr3learners/")
+# remotes::install_github("mlr3learners/mlr3learners.randomforest")
+library(mlr3learners.randomforest)
 
 # Benchmarking, to compare multiple learners ------------------------------
-
-
+#' The benchmark() function can conveniently compare learners on the same
+#' dataset(s).
+learners <- list(learner1, learner2, lrn("classif.randomForest"))
+bm_grid <- mlr3::benchmark_grid(task, learners, cv10)
+bm <- mlr3::benchmark(bm_grid)
+c("classif.acc", "classif.ce") %>% mlr_measures$mget() %>% bm$aggregate() %>% print()
