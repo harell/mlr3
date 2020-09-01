@@ -1,12 +1,12 @@
-Package: mlr3
+Package: mlr3playground
 Type: Package
 Title: Playground for mlr3 Packages
+Description: Playgrouind for mlr3 Packages.
 URL: https://github.com/harell/mlr3
-Version: 0.0.1
+Version: 0.0.2
 Date: 2020-04-24
 Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
-Description: Playground for mlr3 Packages
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -24,5 +24,8 @@ Imports:
     R6,
     config (>= 0.3),
     assertthat (>= 0.2.1),
+    magrittr,
     yaml,
-    mlr3
+    mlr3,
+    mlr3pipelines,
+    mlr3learners
