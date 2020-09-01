@@ -4,10 +4,12 @@
 ################################################################################
 # Imports -----------------------------------------------------------------
 TaskClassif <- mlr3::TaskClassif
+Learner <- mlr3::Learner
 mlr_learners <- mlr3::mlr_learners
 mlr_measures <- mlr3::mlr_measures
 as.data.table <- mlr3::as.data.table
-
+lrn <- mlr3::lrn
+rsmp <- mlr3::rsmp
 
 # Setup -------------------------------------------------------------------
 # tasks, train, predict, resample, benchmark
@@ -47,12 +49,27 @@ c("classif.acc", "classif.ce") %>% mlr_measures$mget() %>% preds$score() %>% pri
 preds$confusion %>% print()
 
 # Changing hyperpars ------------------------------------------------------
-
+#' The learner contains information about all parameters that can be configured,
+#' including data type, constraints, defaults, etc. We can change the
+#' hyperparameters either during construction of later through an active
+#' binding.
+print(learner1$param_set)
+learner2 <- lrn("classif.rpart", predict_type = "prob", minsplit = 50)
+learner2$param_set$values$minsplit <- 50
 
 # Resampling / Cross-validation -------------------------------------------
-
+#' Resampling simply repeats the train-predict-score loop and collects all
+#' results in a nice data.table.
+cv10 <- rsmp("cv", folds = 10)
+predict_cv <- resample(task, learner1, cv10)
+print(predict_cv)
 
 # Installing more learners from mlr3’s GitHub learner org -----------------
+c("classif.acc", "classif.ce") %>% mlr_measures$mget() %>% predict_cv$score() %>% print()
+predict_cv$data %>% print()
+predict_cv$prediction() %>% as.data.table() %>% dplyr::arrange(row_id) %>% head() %>% print()
+
+# Populating the learner dictionary ---------------------------------------
 
 
 
