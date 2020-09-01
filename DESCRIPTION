@@ -7,7 +7,6 @@ Version: 0.0.1
 Date: 2020-04-24
 Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
-Description: Playground for mlr3 Packages
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
