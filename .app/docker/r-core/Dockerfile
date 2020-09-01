@@ -21,6 +21,14 @@ RUN R -q -e "remotes::install_cran(c('profvis', 'renv', 'tinytex'))"
 RUN R -q -e "remotes::install_cran(c('devtools', 'testthat', 'covr', 'roxygen2'))"
 RUN R -q -e "tinytex::install_tinytex()"
 
+# mlr3 Packages ----------------------------------------------------------------
+RUN R -q -e "remotes::install_cran(c(\
+    'mlr3',     'mlr3learners', 'mlr3pipelines', \
+    'mlr3db',   'mlr3data',     'mlr3measures', \
+    'mlr3misc', 'mlr3verse',    'mlr3viz', \
+    'mlr3time', 'paradox'  \
+  ))"
+
 # Install Project Dependencies -------------------------------------------------
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "remotes::install_deps(dependencies = 'Depends')"
