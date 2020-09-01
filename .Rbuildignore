@@ -1,0 +1,39 @@
+# Files ------------------------------------------------------------------------
+^.*\.Rproj$
+^\.dockerignore$
+^\.gitattributes$
+^\.gitlab-ci.yml
+^\.Rprofile$
+^\.travis\.yml$
+^codecov\.yml$
+^docker-compose\.yml$
+^LICENSE\.md$
+^README\.Rmd$
+^renv\.lock$
+^tic\.R$
+
+.*\.gitkeep$
+.*\.ini$
+.*\.md$
+.*\.png$
+
+# Folders ----------------------------------------------------------------------
+.*_cache/*
+^\.app/*
+^\.Rproj\.user$
+^cache/*
+^data-raw/*
+^inst/data/*
+^inst/docs/*
+^renv/*
+^temp/*
+^public/*
+^renv/*
+
+# pkgdown ----------------------------------------------------------------------
+^vignettes/*
+^docs/*
+
+
+
+

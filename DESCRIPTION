@@ -1,0 +1,34 @@
+Package: template.project
+Type: Package
+Title: R Project Template for Analytic Applications
+URL: https://data-science-competitions.github.io/template.project/
+BugReports: https://github.com/data-science-competitions/template.project/issues
+Version: 1.2.1
+Date: 2020-04-24
+Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
+Maintainer: Harel Lustiger <tidylab@gmail.com>
+Description: This template conforms to a conceptual model of **Analysis Projects** suggested by [Hadley Wickham](https://docs.google.com/document/d/1LzZKS44y4OEJa4Azg5reGToNAZL0e0HSUwxamNY7E-Y/).  
+    Using this template reduces:  
+    * Unnecessary variance between projects configurations; and  
+    * Development time spent on making a barebone project working for the first time.    
+    This is possible as the boilerplate comes with:    
+    * Fully configured test-suite, including code-coverage; and  
+    * Fully configured continuous-integration (CI) script for Travis.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
+Roxygen: list(markdown = TRUE, r6 = TRUE)
+Language: en-GB
+Depends: 
+    R (>= 3.5)
+Suggests: 
+    covr (>= 3.2.1),
+    desc (>= 1.2.0),
+    devtools (>= 2.0.2),
+    testthat (>= 2.0.1)
+Imports:
+    R6,
+    config (>= 0.3),
+    assertthat (>= 0.2.1),
+    yaml
