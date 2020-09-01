@@ -4,13 +4,15 @@ FROM rocker/tidyverse:4.0.0
 # Setup ------------------------------------------------------------------------
 RUN apt-get update && apt-get install -y \
     dos2unix \
+    r-cran-rjava \
     libcurl4-openssl-dev \
     libssl-dev \
-	libxt-dev \
+	  libxt-dev \
     libxml2-dev \
     libpq-dev \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN R CMD javareconf -e
 
 # Configure RStudio Server -----------------------------------------------------
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
@@ -28,6 +30,11 @@ RUN R -q -e "remotes::install_cran(c(\
     'mlr3misc', 'mlr3verse',    'mlr3viz', \
     'paradox'  \
   ))"
+
+#RUN R -q -e "remotes::install_github(c( \
+#  'mlr3learners/mlr3learners.randomforest@v0.1.2', \
+#  'mlr3learners/mlr3learners.extratrees@v0.2.0' \
+#  ))"
 
 # Install Project Dependencies -------------------------------------------------
 COPY ./DESCRIPTION ./DESCRIPTION
