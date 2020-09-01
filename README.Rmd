@@ -36,18 +36,18 @@ badges$covr <- list(
 invisible(lapply(badges, do.call, what = usethis::use_badge))
 ```
 
-# ``r DESCRIPTION$get_field("Package")`` <img src='https://i.imgur.com/cLcAYfz.png' align="right" height="50"/>
+# ``r DESCRIPTION$get_field("Package")`` <img src='https://i.imgur.com/Gc07eiA.png' align="right" height="50"/>
 
 <!-- badges: start -->
-[![continuous-integration](https://travis-ci.org/data-science-competitions/template.project.svg?branch=master)](https://travis-ci.org/data-science-competitions/template.project)
-[![code-coverage](https://codecov.io/gh/data-science-competitions/template.project/branch/master/graph/badge.svg)](https://codecov.io/github/data-science-competitions/template.project/?branch=master)
+[![continuous-integration](https://travis-ci.org/harell/mlr3.svg?branch=master)](https://travis-ci.org/harell/mlr3)
+[![code-coverage](https://codecov.io/gh/harell/mlr3/branch/master/graph/badge.svg)](https://codecov.io/github/harell/mlr3/?branch=master)
 <!-- badges: end -->
 
 `r DESCRIPTION$get_field("Title")`
 ---
 
-```{r, echo = FALSE, out.width = "75%"}
-knitr::include_graphics("https://i.imgur.com/RLEQkhe.png")
+```{r, echo = FALSE, out.width = "100%"}
+knitr::include_graphics("https://i.imgur.com/xqZ3QCc.png")
 ```
 
 ## Overview
