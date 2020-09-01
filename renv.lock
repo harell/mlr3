@@ -324,6 +324,20 @@
       "Repository": "CRAN",
       "Hash": "978aa169a072e2a0ed2aa5d8a8f3a07c"
     },
+    "mlr3": {
+      "Package": "mlr3",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "893fdedd0feffe03efe3952e09ee206a"
+    },
+    "mlr3learners": {
+      "Package": "mlr3learners",
+      "Version": "0.2.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "75223ab865913770d241f288b5c03004"
+    },
     "mlr3measures": {
       "Package": "mlr3measures",
       "Version": "0.1.3",
