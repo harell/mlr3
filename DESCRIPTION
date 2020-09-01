@@ -24,4 +24,5 @@ Imports:
     R6,
     config (>= 0.3),
     assertthat (>= 0.2.1),
-    yaml
+    yaml,
+    mlr3
