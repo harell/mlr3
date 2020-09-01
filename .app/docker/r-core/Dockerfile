@@ -26,7 +26,7 @@ RUN R -q -e "remotes::install_cran(c(\
     'mlr3',     'mlr3learners', 'mlr3pipelines', \
     'mlr3db',   'mlr3data',     'mlr3measures', \
     'mlr3misc', 'mlr3verse',    'mlr3viz', \
-    'mlr3time', 'paradox'  \
+    'paradox'  \
   ))"
 
 # Install Project Dependencies -------------------------------------------------

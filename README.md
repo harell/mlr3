@@ -1,5 +1,5 @@
 
-# `mlr3` <img src='https://i.imgur.com/Gc07eiA.png' align="right" height="50"/>
+# `mlr3playground` <img src='https://i.imgur.com/Gc07eiA.png' align="right" height="50"/>
 
 <!-- badges: start -->
 
@@ -17,7 +17,7 @@ Playground for mlr3 Packages
 
 ## Installation
 
-You can install `mlr3` by using:
+You can install `mlr3playground` by using:
 
     install.packages("remotes")
-    remotes::install_local("mlr3")
+    remotes::install_local("mlr3playground")
