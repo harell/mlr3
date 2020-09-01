@@ -27,4 +27,5 @@ Imports:
     magrittr,
     yaml,
     mlr3,
-    mlr3pipelines
+    mlr3pipelines,
+    mlr3learners
