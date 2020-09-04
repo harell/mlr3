@@ -35,6 +35,31 @@ bc_task %>% rsample$instantiate()
 rsample$instance
 
 
-# Sample the data: Predifined Folds Re-sampling ---------------------------
+# Sample the data: Predefined Folds Re-sampling ---------------------------
+set.seed(1)
+n <- nrow(BreastCancer)
 
+# Define folds externally
+folds <- sample(1:5, size = n, replace = TRUE)
+table(folds)
 
+# Add folds to the data set and use it as grouping factor
+# Instantiate a classification task
+bc_task <- mlr3::TaskClassif$new(
+    id = "BreastCancer",
+    backend = BreastCancer %>% tibble::add_column(folds_id = folds, .before = 0),
+    target = "Class",
+    positive = "malignant"
+)
+bc_task$col_roles$group <- "folds_id"
+# Remove "folds_id" from features
+bc_task$col_roles$feature <- setdiff(bc_task$col_roles$feature, "folds_id")
+
+# Instantiate a re-sampling task
+rsample <- mlr3::rsmp("cv", folds = 5)
+set.seed(123)
+rsample$instantiate(bc_task)
+rsample$instance
+
+rsample$train_set(1)
+rsample$test_set(1)

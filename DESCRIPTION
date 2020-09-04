@@ -29,4 +29,5 @@ Imports:
     yaml,
     mlr3,
     mlr3pipelines,
-    mlr3learners
+    mlr3learners,
+    tibble
