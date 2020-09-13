@@ -20,6 +20,7 @@ Suggests:
     desc (>= 1.2.0),
     devtools (>= 2.0.2),
     testthat (>= 2.0.1),
+    usethis2,
     skimr
 Imports:
     R6,
@@ -31,3 +32,5 @@ Imports:
     mlr3pipelines,
     mlr3learners,
     tibble
+Remotes:
+    tidylab/usethis2

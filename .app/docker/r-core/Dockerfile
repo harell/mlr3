@@ -4,15 +4,13 @@ FROM rocker/rstudio:4.0.0
 # Setup ------------------------------------------------------------------------
 RUN apt-get update && apt-get install -y \
     dos2unix \
-    r-cran-rjava \
     libcurl4-openssl-dev \
     libssl-dev \
-	  libxt-dev \
+	libxt-dev \
     libxml2-dev \
     libpq-dev \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN R CMD javareconf -e
 
 # Configure RStudio Server -----------------------------------------------------
 ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
