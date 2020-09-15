@@ -3,12 +3,12 @@ services:
   # R Core
   ######################################################
   r-core:
-    image: r/core/mlr3:4.0.0
+    image: r/core/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-core/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2020-09-15'
     entrypoint: '/bin/bash'
     container_name: r_core
     restart: "no"
@@ -16,12 +16,12 @@ services:
   # R Development
   ######################################################
   r-develop:
-    image: r/develop/mlr3:4.0.0
+    image: r/develop/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-core/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2020-09-15'
     entrypoint: '/init'
     container_name: r_develop
     volumes:
@@ -35,12 +35,10 @@ services:
   # R Testing
   ######################################################
   r-test:
-    image: r/test/mlr3:4.0.0
+    image: r/test/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-testing/Dockerfile
-      args:
-        - TIC_VER='0.9.0'
     entrypoint: '/bin/bash'
     container_name: r_test
     restart: "no"
