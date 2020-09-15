@@ -32,6 +32,7 @@ RUN R -q -e "install_cran(('tinytex')); tinytex::install_tinytex()"
 
 
 # Install Project Dependencies -------------------------------------------------
+RUN R -q -e "install_cran('mlr3learners', dependencies = TRUE)"
 RUN R -q -e "install_cran('mlr3verse', dependencies = TRUE)"
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "install_deps(dependencies = 'Depends')"
