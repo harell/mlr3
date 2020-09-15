@@ -27,6 +27,7 @@ Imports:
     mlr3,
     mlr3pipelines,
     mlr3learners,
-    tibble
+    tibble,
+    yaml
 Remotes:
     tidylab/usethis2
