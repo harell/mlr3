@@ -1,10 +1,6 @@
 # R Package Development: Testing------------------------------------------------
-FROM r/core/mlr3:4.0.0
+FROM r/core/mlr3:4.0.2
 RUN touch .Renviron .Rprofile
-
-# Setup Continuous Integration (CI) System -------------------------------------
-ARG TIC_VER='0.7.0'
-RUN R -q -e "remotes::install_github('ropensci/tic@v$(eval echo $TIC_VER)', upgrade = FALSE)"
 
 # Prepare Package Files --------------------------------------------------------
 ARG R_USER=./home/rstudio/
