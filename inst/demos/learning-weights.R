@@ -10,10 +10,11 @@ pkgload::load_all()
 
 # Creating tasks and learners ---------------------------------------------
 ml_task <- MachineLearningTask$new(id = "mtcars", backend = datasets::mtcars, target = "mpg")
-learner <- mlr_learners$get("regr.lm")
+ml_task$set_col_role(cols = "wt", new_roles = "weight", exclusive = TRUE)
 
 # Training and predicting -------------------------------------------------
-#' Now the usual ML operations: Train on some observations, predict on others.
+learner <- mlr_learners$get("regr.lm")
+
 learner$train(ml_task, row_ids = 01:30)
 print(learner$model)
 
