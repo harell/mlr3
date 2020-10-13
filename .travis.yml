@@ -3,7 +3,7 @@ os: linux
 
 # meta -------------------------------------------------------------------------
 language: r
-r: 4.0.0
+r: 4.0.2
 cache:
   packages: true
   ccache: true

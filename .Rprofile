@@ -9,32 +9,14 @@ assign(".Rprofile", new.env(), envir = globalenv())
     URL <- if(is.na(Date)) "https://cran.rstudio.com/" else paste0("https://mran.microsoft.com/snapshot/", Date)
     options(repos = URL)
 
-    suppressMessages(try({renv::consent(provided = TRUE); unlink("./renv")}))
-    options(
-        renv.lockfile = "./.app/renv/renv.lock",
-        renv.consent = TRUE,
-        renv.clean = FALSE,
-        renv.settings = list(
-            ignored.packages = c("renv"),
-            snapshot.type = ifelse(utils::packageVersion("renv") > "0.9.3", "explicit", "packrat"),
-            auto.snapshot = FALSE,
-            package.dependency.fields = c("Imports", "Depends", "LinkingTo", "Suggests")[1:3],
-            vcs.ignore.library = TRUE,
-            use.cache = TRUE
-        )
-    )
-
     # Programming Logic
     pkgs <- c("usethis", "devtools", "magrittr", "testthat")
-    invisible(sapply(pkgs, require, warn.conflicts = FALSE, character.only = TRUE))
+    invisible(sapply(pkgs, require, warn.conflicts = FALSE, character.only = TRUE, quietly = TRUE))
 }
 
 # .Last -------------------------------------------------------------------
 .Last <- function(){
     try(if(testthat::is_testing()) return())
-
-    unlink("./renv")
-    try(system('docker-compose down'))
 }
 
 # Docker ------------------------------------------------------------------

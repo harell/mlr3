@@ -4,7 +4,7 @@ Title: Playground for mlr3 Packages
 Description: Playgrouind for mlr3 Packages.
 URL: https://github.com/harell/mlr3
 Version: 0.0.2
-Date: 2020-04-24
+Date: 2020-09-15
 Authors@R: c(person("Harel", "Lustiger", email = "tidylab@gmail.com", role = c("aut", "cre")))
 Maintainer: Harel Lustiger <tidylab@gmail.com>
 License: MIT + file LICENSE
@@ -14,20 +14,20 @@ RoxygenNote: 7.1.0
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 Language: en-GB
 Depends: 
-    R (>= 3.5)
+    R (>= 3.5),
+    R6
 Suggests: 
     covr (>= 3.2.1),
     desc (>= 1.2.0),
     devtools (>= 2.0.2),
     testthat (>= 2.0.1),
-    skimr
+    usethis2
 Imports:
-    R6,
-    config (>= 0.3),
-    assertthat (>= 0.2.1),
     magrittr,
-    yaml,
     mlr3,
     mlr3pipelines,
     mlr3learners,
-    tibble
+    tibble,
+    yaml
+Remotes:
+    tidylab/usethis2

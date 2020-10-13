@@ -1,43 +1,39 @@
 # R Package Development: Core --------------------------------------------------
-FROM rocker/rstudio:4.0.0
+FROM rocker/rstudio:4.0.2
 
 # Setup ------------------------------------------------------------------------
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -qq && apt-get -y --no-install-recommends install \
     dos2unix \
-    r-cran-rjava \
     libcurl4-openssl-dev \
     libssl-dev \
-	  libxt-dev \
+	libxt-dev \
     libxml2-dev \
+    libcairo2-dev \
+    libsqlite-dev \
+    libmariadbd-dev \
+    libmariadbclient-dev \
     libpq-dev \
+    libssh2-1-dev \
+    libsasl2-dev \
+    unixodbc-dev \
     git \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN R CMD javareconf -e
 
 # Configure RStudio Server -----------------------------------------------------
-ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-04-24\'
+ARG R_REPOS=\'https://mran.microsoft.com/snapshot/2020-06-22\'
 RUN touch .env .Rprofile
 RUN echo "options(repos = ${R_REPOS})" >> .Rprofile
-
+RUN echo "require(remotes)" >> .Rprofile
 RUN R -q -e "if(!require(remotes)) install.packages('remotes')"
-RUN echo "install_cran <- remotes::install_cran" >> .Rprofile
-RUN echo "install_deps <- remotes::install_deps" >> .Rprofile
-RUN echo "install_github <- remotes::install_github" >> .Rprofile
 RUN R -q -e "install_cran('tidyverse', dependencies = TRUE)"
-
-RUN R -q -e "install_cran(c('profvis', 'renv', 'tinytex'))"
+RUN R -q -e "install_cran(c('profvis', 'renv'))"
 RUN R -q -e "install_cran(c('devtools', 'testthat', 'covr', 'roxygen2'))"
-RUN R -q -e "tinytex::install_tinytex()"
+RUN R -q -e "install_cran(('tinytex')); tinytex::install_tinytex()"
 
-# mlr3 Packages ----------------------------------------------------------------
-RUN R -q -e "install_cran('mlr3verse', dependencies = TRUE)"
-RUN R -q -e "install_cran(c('mlr3db', 'mlr3data', 'mlr3measures', 'mlr3misc'))"
-#RUN R -q -e "install_github(c( \
-#  'mlr3learners/mlr3learners.randomforest@v0.1.2', \
-#  'mlr3learners/mlr3learners.extratrees@v0.2.0' \
-#  ))"
 
 # Install Project Dependencies -------------------------------------------------
+RUN R -q -e "install_cran('mlr3learners', dependencies = TRUE)"
+RUN R -q -e "install_cran('mlr3verse', dependencies = TRUE)"
 COPY ./DESCRIPTION ./DESCRIPTION
 RUN R -q -e "install_deps(dependencies = 'Depends')"
 RUN R -q -e "install_deps(dependencies = 'Imports')"

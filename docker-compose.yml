@@ -3,44 +3,40 @@ services:
   # R Core
   ######################################################
   r-core:
-    image: r/core/mlr3:4.0.0
+    image: r/core/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-core/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
-    entrypoint: '/bin/bash'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2020-09-15'
     container_name: r_core
+    entrypoint: '/bin/bash'
     restart: "no"
   ######################################################
   # R Development
   ######################################################
   r-develop:
-    image: r/develop/mlr3:4.0.0
+    image: r/core/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-core/Dockerfile
       args:
-        - R_REPOS='https://mran.microsoft.com/snapshot/2020-04-24'
-    entrypoint: '/init'
+        - R_REPOS='https://mran.microsoft.com/snapshot/2020-09-15'
     container_name: r_develop
+    entrypoint: '/init'
     volumes:
       - ".:/home/rstudio/rproject/"
     ports:
       - 8787:8787
     restart: "no"
-    depends_on:
-      - r-core
   ######################################################
   # R Testing
   ######################################################
   r-test:
-    image: r/test/mlr3:4.0.0
+    image: r/test/mlr3:4.0.2
     build:
       context: ./
       dockerfile: ./.app/docker/r-testing/Dockerfile
-      args:
-        - TIC_VER='0.9.0'
     entrypoint: '/bin/bash'
     container_name: r_test
     restart: "no"
