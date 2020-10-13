@@ -1,19 +1,13 @@
 ################################################################################
 ## mlr3 weighted observation
 ################################################################################
-# Imports -----------------------------------------------------------------
-MachineLearningTask <- mlr3::TaskRegr
-mlr_learners <- mlr3::mlr_learners
-
-# Setup -------------------------------------------------------------------
-pkgload::load_all()
-
 # Creating tasks and learners ---------------------------------------------
-ml_task <- MachineLearningTask$new(id = "mtcars", backend = datasets::mtcars, target = "mpg")
-ml_task$set_col_role(cols = "wt", new_roles = "weight", exclusive = TRUE)
+ml_task <-  mlr3::TaskRegr$new(id = "mtcars", backend = mtcars, target = "mpg")
+ml_task$set_col_role(cols = "wt", new_roles = "weight", exclusive = FALSE)
 
 # Training and predicting -------------------------------------------------
-learner <- mlr_learners$get("regr.lm")
+library(mlr3learners)
+learner <- mlr3::mlr_learners$get("regr.lm")
 
 learner$train(ml_task, row_ids = 01:30)
 print(learner$model)
@@ -21,5 +15,7 @@ print(learner$model)
 preds <- learner$predict(ml_task, row_ids = 31:32)
 print(preds)
 
-preds <- learner$predict_newdata(mtcars[31:32,])
+preds <- learner$predict_newdata(mtcars[31:32,] %>% dplyr::select(-wt) %>% tibble::add_column(wt = 1))
 print(preds)
+
+
