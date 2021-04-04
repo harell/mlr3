@@ -3,7 +3,7 @@
 ################################################################################
 # Creating tasks and learners ---------------------------------------------
 ml_task <-  mlr3::TaskRegr$new(id = "mtcars", backend = mtcars, target = "mpg")
-ml_task$set_col_role(cols = "wt", new_roles = "weight")
+ml_task$set_col_roles("wt", "weight")
 
 # Training and predicting -------------------------------------------------
 library(mlr3learners)
