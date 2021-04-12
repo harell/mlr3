@@ -22,6 +22,7 @@ Suggests:
     devtools (>= 2.0.2),
     testthat (>= 2.0.1)
 Imports:
+    e1071,
     mlr3,
     mlr3pipelines,
     mlr3learners,
