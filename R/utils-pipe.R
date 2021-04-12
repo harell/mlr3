@@ -1,21 +1,21 @@
 #' Pipe operator
 #'
-#' See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
-#'
 #' @name %>%
 #' @rdname pipe
 #' @keywords internal
 #' @export
-#' @importFrom magrittr %>%
+#' @importFrom purrr %>%
 #' @usage lhs \%>\% rhs
+#' @return The result of \code{rhs(lfs)}.
 NULL
 
-#' PipeOp Composition Operator
+#' NULL operator
 #'
-#'
-#' @name %>>%
+#' @name %||%
+#' @rdname pipe
 #' @keywords internal
 #' @export
-#' @importFrom mlr3pipelines %>>%
-#' @usage g1 \%>>\% g2
+#' @importFrom purrr %||%
+#' @usage x \%||\% y
+#' @return If \code{rhs} is NULL, will return \code{lhs}; otherwise returns \code{rhs}.
 NULL
