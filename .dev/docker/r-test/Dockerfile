@@ -20,7 +20,7 @@ RUN cp .env ${R_USER}/.Renviron
 WORKDIR ${R_USER}/${R_PACKAGE_NAME}
 
 # Test-Suite -------------------------------------------------------------------
-RUN R -q -e "devtools::check(document = TRUE, error_on = 'error')"
+RUN R -q -e "devtools::check(document = TRUE, error_on = 'note')"
 RUN R -q -e "devtools::load_all(export_all = FALSE, helpers = FALSE); \
              testthat::test_dir('./tests/testthat', stop_on_failure = TRUE)"
 
