@@ -7,8 +7,9 @@
 #' @param service (`character`) Service name in \code{docker-compose.yml}.
 #' @param field (`character`) Field name in \code{docker-compose.yml}.
 #' @param slug (`character`) URL slug (e.g. \code{shiny-app-name}).
+#' @family docker
 #' @export
-DockerCompose <- R6::R6Class(
+DockerCompose <- R6::R6Class(# nocov start
     classname = "DockerCompose",
     cloneable = FALSE,
     lock_objects = FALSE,
@@ -47,7 +48,7 @@ DockerCompose <- R6::R6Class(
         path_docker_compose = c(),
         composition = list()
     )
-)
+)# nocov end
 DockerCompose$funs <- new.env()
 
 # Public Methods ----------------------------------------------------------
