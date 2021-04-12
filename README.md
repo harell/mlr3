@@ -1,10 +1,10 @@
 
-# `mlr3` <img src="https://raw.githubusercontent.com/tidylab/mlr3/master/pkgdown/logo.png" align="right" height="75"/>
+# `mlr3playground` <img src="https://raw.githubusercontent.com/harell/mlr3/master/pkgdown/logo.png" align="right" height="75"/>
 
 <!-- badges: start -->
 
 [![R build
-status](https://github.com/tidylab/mlr3/workflows/R-CMD-check/badge.svg)](https://github.com/tidylab/mlr3/actions)
+status](https://github.com/harell/mlr3/workflows/R-CMD-check/badge.svg)](https://github.com/harell/mlr3/actions)
 
 <!-- badges: end -->
 
