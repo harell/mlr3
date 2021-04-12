@@ -1,12 +1,16 @@
+# Docker
+docker-compose.yml
+R/utils-DockerCompose.R
+
 # Folders
-.app/
+.dev/
+.drake/
 .git/
 .Rproj.user/
 man/
-inst/data
-inst/docs
-renv/
+docs/
 
 # Files
-^docker-compose.yml$
+!.drake/.gitignore
+
 

@@ -38,3 +38,6 @@
 
 
 
+^\.dev$
+^\.github$
+^vignettes/articles$
