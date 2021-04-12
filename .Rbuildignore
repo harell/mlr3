@@ -40,3 +40,4 @@
 
 ^\.dev$
 ^\.github$
+^vignettes/articles$
