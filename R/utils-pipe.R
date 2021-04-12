@@ -1,3 +1,14 @@
+#' PipeOp Composition Operator
+#'
+#' @name %>>%
+#' @rdname pipe
+#' @keywords internal
+#' @export
+#' @importFrom mlr3pipelines %>>%
+#' @usage g1 \%>>\% g2
+#' @return The constructed Graph.
+NULL
+
 #' Pipe operator
 #'
 #' @name %>%
