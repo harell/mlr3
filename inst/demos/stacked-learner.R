@@ -7,9 +7,6 @@
 pkgload::load_all(export_all = TRUE)
 library("mlr3")
 library("mlr3pipelines")
-
-
-# Instantiate ML ----------------------------------------------------------
 task <- mlr3::TaskRegr$new(id = "mtcars", backend = datasets::mtcars, target = "mpg")
 
 
@@ -22,23 +19,22 @@ learner_lm <- lrn("regr.lm")
 learner_svm <- lrn("regr.svm")
 
 
-# Create the learner out-of-bag predictions
-task_rf <- po("learner_cv", learner_knn, id = "rf")
-task_lm <- po("learner_cv", learner_lm, id = "lm")
-task_svm <- po("learner_cv", learner_svm, id = "svm")
-
-
 # Summarise steps into level 0
 (
-    ensemble <- list(task_lm, task_svm, po("nop", id = "original"))
+    ensemble <- list(
+        PipeOpLearnerCV$new(learner_lm, id = "cv_lm"),
+        PipeOpLearnerCV$new(learner_svm, id = "cv_svm"),
+        PipeOpNOP$new(id = "original")
+    )
     %>% gunion()
-    %>>% po("featureunion", id = "union1")
+    %>>% PipeOpFeatureUnion$new(id = "union1")
     %>>% LearnerRegrAvg$new()
 )
 ensemble$plot(html = FALSE)
 
 
 # Train Model
+set.seed(2059)
 learner_ensemble <- GraphLearner$new(ensemble)
 learner_ensemble$train(task)
 learner_ensemble$predict_newdata(mtcars)
